@@ -4,7 +4,7 @@ version := "$version$"
 
 organization := "$organization$"
 
-scalaVersion := "2.10.3"
+scalaVersion := "2.11.0"
 
 scalacOptions := Seq("-unchecked", "-feature", "-deprecation", "-language:postfixOps", "-encoding", "utf8")
 
