@@ -11,7 +11,3 @@ scalacOptions := Seq("-unchecked", "-feature", "-deprecation", "-language:postfi
 libraryDependencies ++= Seq(
   "org.specs2" %% "specs2" % "2.3.11" % "test"
 )
-
-packSettings
-
-packMain := Map("$name$" -> "$package$.Application")
