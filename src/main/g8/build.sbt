@@ -14,6 +14,11 @@ scalaVersion := "$scalaversion$"
 scalacOptions := Seq("-encoding", "utf8")
 
 libraryDependencies ++= Seq(
+  "ch.qos.logback" % "logback-classic" % "1.0.13",
+  "com.typesafe" % "config" % "1.2.0",
+  "com.typesafe.akka" %% "akka-actor" % "2.3.6",
+  "com.typesafe.akka" %% "akka-slf4j" % "2.3.6",
+  "com.typesafe.akka" %% "akka-testkit" % "2.3.6" % "test",
   "org.specs2" %% "specs2" % "2.3.11" % "test"
 )
 
