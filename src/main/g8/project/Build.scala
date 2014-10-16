@@ -9,27 +9,26 @@ object Build extends sbt.Build {
 
   lazy val buildSettings = Seq(
     scalaVersion := "$scalaversion$",
+    crossScalaVersions := Seq("$scalaversion$"),
     scalacOptions ++= Seq("-encoding", "utf8"))
+
+  lazy val publishSettings = Seq(
+    publishMavenStyle := true,
+    // See http://www.scala-sbt.org/0.13/docs/Publishing.html
+    publishTo := None
 
   lazy val root = (project in file("."))
     .settings(Defaults.defaultSettings: _*)
-    .settings(Pack.settings: _*)
     .settings(Scalariform.settings: _*)
     .settings(Jacoco.settings: _*)
     .settings(buildSettings: _*)
+    .settings(publishSettings: _*)
     .settings(libraryDependencies ++= dependencies)
     .settings(libraryDependencies ++= testDependencies.map(_ % "test"))
     .settings(
       name := "$name$",
       organization := "$organization$",
       version := "$version$")
-}
-
-object Pack {
-  import xerial.sbt.Pack._
-
-  lazy val settings = packSettings ++ Seq(
-    packMain := Map("$name$" -> "$package$.Application"))
 }
 
 object Jacoco {
