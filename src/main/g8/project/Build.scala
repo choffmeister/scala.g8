@@ -15,7 +15,7 @@ object Build extends sbt.Build {
   lazy val publishSettings = Seq(
     publishMavenStyle := true,
     // See http://www.scala-sbt.org/0.13/docs/Publishing.html
-    publishTo := None
+    publishTo := None)
 
   lazy val root = (project in file("."))
     .settings(Defaults.defaultSettings: _*)
