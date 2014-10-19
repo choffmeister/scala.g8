@@ -2,14 +2,13 @@ package $package$
 
 import java.io.File
 import java.util.concurrent.TimeUnit
-import com.typesafe.config.{ConfigException, ConfigFactory, Config => RawConfig}
+import com.typesafe.config.{ ConfigException, ConfigFactory, Config => RawConfig }
 import scala.concurrent.duration.FiniteDuration
 
 case class Config(
   httpInterface: String,
   httpPort: Int,
-  httpWebDir: Option[File]
-)
+  httpWebDir: Option[File])
 
 object Config {
   def load(): Config = {
@@ -24,9 +23,9 @@ object Config {
 
   implicit class RichConfig(val underlying: RawConfig) extends AnyVal {
     def getOptionalString(path: String): Option[String] = try {
-       Some(underlying.getString(path))
+      Some(underlying.getString(path))
     } catch {
-       case e: ConfigException.Missing => None
+      case e: ConfigException.Missing ⇒ None
     }
   }
 }

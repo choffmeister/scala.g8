@@ -12,16 +12,16 @@ class StaticContentHttpService(contentDir: Option[File]) extends Actor with Http
 
   def receive = runRoute(route)
   def route = contentDir match {
-    case Some(contentDir) =>
+    case Some(contentDir) ⇒
       val index = getFromFile(s"\${contentDir}/index.html")
       val cache = getFromFile(s"\${contentDir}/cache.manifest")
       val app = getFromDirectory(contentDir.toString)
       pathSingleSlash(index) ~
-      path("index.html")(index) ~
-      path("cache.manifest")(cache) ~
-      pathPrefixTest(("app" ~ Slash))(app) ~
-      pathPrefixTest(!("app" ~ Slash))(index)
-    case _ =>
+        path("index.html")(index) ~
+        path("cache.manifest")(cache) ~
+        pathPrefixTest(("app" ~ Slash))(app) ~
+        pathPrefixTest(!("app" ~ Slash))(index)
+    case _ ⇒
       reject()
   }
 }
