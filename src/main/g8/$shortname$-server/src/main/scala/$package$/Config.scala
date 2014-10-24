@@ -2,7 +2,9 @@ package $package$
 
 import java.io.File
 import java.util.concurrent.TimeUnit
+
 import com.typesafe.config.{ ConfigException, ConfigFactory, Config ⇒ RawConfig }
+
 import scala.collection.JavaConverters._
 import scala.concurrent.duration.FiniteDuration
 

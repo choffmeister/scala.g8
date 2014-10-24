@@ -1,10 +1,12 @@
 package $package$
 
+import $package$.http._
+
 import akka.actor._
 import akka.io.IO
 import spray.can.Http
+
 import scala.concurrent.duration._
-import $package$.http._
 
 class Server extends Bootable {
   implicit val system = ActorSystem("$name$")

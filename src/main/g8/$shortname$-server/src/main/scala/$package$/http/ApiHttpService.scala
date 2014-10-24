@@ -1,8 +1,8 @@
 package $package$.http
 
 import $package$._
+
 import akka.actor._
-import de.choffmeister.auth.common._
 import spray.routing._
 
 class ApiHttpService extends Actor with HttpService with JsonProtocol {

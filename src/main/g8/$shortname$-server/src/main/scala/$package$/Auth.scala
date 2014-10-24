@@ -3,16 +3,14 @@ package $package$
 import java.util.Date
 
 import de.choffmeister.auth.common._
-import de.choffmeister.auth.spray._
 import de.choffmeister.auth.spray.RichHttpAuthenticator._
 import de.choffmeister.auth.spray.RichUserPassAuthenticator._
-import com.typesafe.config._
+import de.choffmeister.auth.spray._
 import spray.json._
 import spray.routing.authentication._
 
-import scala.concurrent._
-import scala.concurrent.duration.FiniteDuration
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent._
 
 object Auth {
   lazy val config = Config.load()
