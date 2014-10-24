@@ -10,11 +10,11 @@ class HttpServiceActor(apiHttp: ActorRef, staticContentHttp: ActorRef) extends A
   def receive = {
     case Connected(_, _) ⇒
       sender ! Register(self)
-    case req@HttpRequest(_, uri, _, _, _) if uri.path.startsWith(Uri.Path("/api")) ⇒
+    case req @ HttpRequest(_, uri, _, _, _) if uri.path.startsWith(Uri.Path("/api")) ⇒
       apiHttp.tell(req, sender)
-    case req@HttpRequest(GET, _, _, _, _) ⇒
+    case req @ HttpRequest(GET, _, _, _, _) ⇒
       staticContentHttp.tell(req, sender)
-    case req@HttpRequest(_, _, _, _, _) ⇒
+    case req @ HttpRequest(_, _, _, _, _) ⇒
       sender ! HttpResponse(status = BadRequest)
   }
 }
