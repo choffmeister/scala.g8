@@ -9,7 +9,7 @@ import spray.can.Http
 import scala.concurrent.duration._
 
 class Server extends Bootable {
-  implicit val system = ActorSystem("$name$")
+  implicit val system = ActorSystem("$shortname$")
   implicit val executor = system.dispatcher
 
   lazy val config = Config.load()
