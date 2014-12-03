@@ -17,7 +17,7 @@ object Build extends sbt.Build {
 
   lazy val resolverSettings = Seq(
     resolvers ++= Seq(
-      "choffmeister repo" at "http://repo.choffmeister.de/maven2/"))
+      "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"))
 
   lazy val commonSettings = Defaults.defaultSettings ++ coordinateSettings ++ buildSettings ++ resolverSettings
 
