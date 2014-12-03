@@ -15,11 +15,7 @@ object Build extends sbt.Build {
     organization := "$organization$",
     version := "$version$")
 
-  lazy val resolverSettings = Seq(
-    resolvers ++= Seq(
-      "Sonatype snapshots" at "https://oss.sonatype.org/content/repositories/snapshots/"))
-
-  lazy val commonSettings = Defaults.defaultSettings ++ coordinateSettings ++ buildSettings ++ resolverSettings
+  lazy val commonSettings = Defaults.defaultSettings ++ coordinateSettings ++ buildSettings
 
   lazy val server = (project in file("$shortname$-server"))
     .settings(commonSettings: _*)
@@ -34,8 +30,8 @@ object Build extends sbt.Build {
       "com.typesafe.akka" %% "akka-slf4j" % "2.3.6",
       "com.typesafe.akka" %% "akka-testkit" % "2.3.6" % "test",
       "commons-codec" % "commons-codec" % "1.9",
-      "de.choffmeister" %% "auth-common" % "0.0.1-SNAPSHOT",
-      "de.choffmeister" %% "auth-spray" % "0.0.1-SNAPSHOT",
+      "de.choffmeister" %% "auth-common" % "0.0.1",
+      "de.choffmeister" %% "auth-spray" % "0.0.1",
       "io.spray" %% "spray-can" % "1.3.1",
       "io.spray" %% "spray-json" % "1.2.6",
       "io.spray" %% "spray-routing" % "1.3.1",
