@@ -37,13 +37,13 @@ object Auth {
   lazy val bearerTokenHttpAuthenticator = new OAuth2BearerTokenHttpAuthenticator[String](config.authRealm, config.authTokenSecret, sub ⇒ Future(Some(sub)))
   lazy val httpAuthenticator = bearerTokenHttpAuthenticator.withFallback(basicHttpAuthenticator)
 
-  def createTokenResponse(subject: String, claims: Map[String, String] = Map.empty): OAuth2AccessTokenResponse = {
+  def createTokenResponse(subject: String, claims: Map[String, JsValue] = Map.empty): OAuth2AccessTokenResponse = {
     val now = System.currentTimeMillis
     val token = JsonWebToken(
       createdAt = new Date(now),
       expiresAt = new Date(now + config.authTokenLifetime.toMillis),
       subject = subject,
-      claims = claims.map(c ⇒ c._1 -> JsString(c._2))
+      claims = claims
     )
     OAuth2AccessTokenResponse("bearer", JsonWebToken.write(token, config.authTokenSecret), config.authTokenLifetime.toSeconds)
   }

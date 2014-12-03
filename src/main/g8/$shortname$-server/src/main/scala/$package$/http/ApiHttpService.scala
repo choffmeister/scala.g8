@@ -3,6 +3,8 @@ package $package$.http
 import $package$._
 
 import akka.actor._
+import de.choffmeister.auth.common.JsonWebToken
+import spray.http.StatusCodes.Unauthorized
 import spray.routing._
 
 class ApiHttpService extends Actor with HttpService with JsonProtocol {
@@ -17,7 +19,12 @@ class ApiHttpService extends Actor with HttpService with JsonProtocol {
           authenticate(Auth.basicHttpAuthenticator) { user ⇒
             complete(Auth.createTokenResponse(user))
           }
-        }
+        } ~
+          path("renew") {
+            authenticate(Auth.bearerTokenHttpAuthenticator.withoutExpiration) { user ⇒
+              complete(Auth.createTokenResponse(user))
+            }
+          }
       } ~
         path("info") {
           authenticate(Auth.httpAuthenticator) { user ⇒
