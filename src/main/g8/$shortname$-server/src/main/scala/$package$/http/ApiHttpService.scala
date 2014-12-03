@@ -18,12 +18,12 @@ class ApiHttpService extends Actor with HttpService with JsonProtocol {
             complete(Auth.createTokenResponse(user))
           }
         }
-      }
-    } ~
-      authenticate(Auth.httpAuthenticator) { user ⇒
-        path("info") {
-          complete("ok - " + user)
+      } ~
+        authenticate(Auth.httpAuthenticator) { user ⇒
+          path("info") {
+            complete(user)
+          }
         }
-      }
+    }
   }
 }
