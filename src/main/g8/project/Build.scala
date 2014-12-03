@@ -24,7 +24,6 @@ object Build extends sbt.Build {
     .settings(Jacoco.settings: _*)
     .settings(libraryDependencies ++= Seq(
       "ch.qos.logback" % "logback-classic" % "1.0.13",
-      "com.jcraft" % "jsch" % "0.1.50",
       "com.typesafe" % "config" % "1.2.0",
       "com.typesafe.akka" %% "akka-actor" % "2.3.6",
       "com.typesafe.akka" %% "akka-slf4j" % "2.3.6",
