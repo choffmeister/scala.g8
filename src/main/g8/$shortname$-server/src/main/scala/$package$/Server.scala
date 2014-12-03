@@ -28,16 +28,4 @@ class Server extends Bootable {
   }
 }
 
-object Server {
-  def main(args: Array[String]) {
-    val server = new Server()
-    server.startup()
-  }
-}
-
-trait Bootable {
-  def startup(): Unit
-  def shutdown(): Unit
-
-  sys.ShutdownHookThread(shutdown())
-}
+object Server extends BootableApp[Server]
