@@ -19,8 +19,8 @@ class ApiHttpService extends Actor with HttpService with JsonProtocol {
           }
         }
       } ~
-        authenticate(Auth.httpAuthenticator) { user ⇒
-          path("info") {
+        path("info") {
+          authenticate(Auth.httpAuthenticator) { user ⇒
             complete(user)
           }
         }
