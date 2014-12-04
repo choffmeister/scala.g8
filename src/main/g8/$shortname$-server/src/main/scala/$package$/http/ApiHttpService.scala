@@ -3,8 +3,6 @@ package $package$.http
 import $package$._
 
 import akka.actor._
-import de.choffmeister.auth.common.JsonWebToken
-import spray.http.StatusCodes.Unauthorized
 import spray.routing._
 
 class ApiHttpService extends Actor with HttpService with JsonProtocol {
