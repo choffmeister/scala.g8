@@ -5,7 +5,6 @@ import de.choffmeister.sbt.WebAppPlugin.{ webAppBuild => sbtWebAppBuild }
 
 object Build extends sbt.Build {
   lazy val dist = TaskKey[File]("dist", "Builds the distribution packages")
-  lazy val dev = TaskKey[File]("dev", "Runs the backend and the frontend")
 
   lazy val buildSettings = Seq(
     scalaVersion := "$scalaversion$",
